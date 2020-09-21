@@ -38,12 +38,12 @@
                     <td><input type="text" name="author"></td>
                 </tr>
                 <tr style="font-family: Courier">
-                    <th style="background: steelblue; color: antiquewhite">Pages</th>
-                    <td><input type="text" name="pages"></td>
-                </tr>
-                <tr style="font-family: Courier">
                     <th style="background: steelblue; color: antiquewhite">Rating</th>
                     <td><input type="text" name="rating"></td>
+                </tr>
+                <tr style="font-family: Courier">
+                    <th style="background: steelblue; color: antiquewhite">Pages</th>
+                    <td><input type="text" name="pages"></td>
                 </tr>
             </table><br>
             <input style="font-family: Courier; color: darkslateblue; background: beige" type="submit" value="Add book">

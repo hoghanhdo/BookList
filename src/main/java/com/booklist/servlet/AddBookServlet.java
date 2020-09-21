@@ -1,5 +1,10 @@
 package com.booklist.servlet;
 
+import com.booklist.beans.Book;
+import com.booklist.beans.User;
+import com.booklist.service.BookListManager;
+
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -11,21 +16,32 @@ import java.io.PrintWriter;
 
 @WebServlet("/addBook")
 public class AddBookServlet extends HttpServlet {
-    public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
+    public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
+
         HttpSession session = request.getSession();
-        session.getAttribute("user");
+        User user = (User) session.getAttribute("user");
+        int userId = user.getId();
 
-        PrintWriter out = response.getWriter();
-        out.println("<html>");
-        out.println("<head>");
-        out.println("<meta charset=\"utf-8\" />");
-        out.println("<title>Hello</title>");
-        out.println("</head>");
-        out.println("<body>");
-        out.println("Hello ${user.firstName");
-        out.println("<br>");
-        out.println("</body>");
-        out.println("</html>");
+        String author = request.getParameter("author");
+        String title = request.getParameter("title");
+        double rating = Double.parseDouble(request.getParameter("rating"));
+        int pages = Integer.parseInt(request.getParameter("pages"));
+        Book book = new Book(title, author, rating, pages);
 
+        BookListManager bookListManager = new BookListManager();
+
+        try{
+            bookListManager.addBook(book, userId);
+            String message = "Book has been successfully added.";
+            request.setAttribute("message", message);
+            request.setAttribute("book", book);
+            RequestDispatcher rd = request.getRequestDispatcher("/notification.jsp");
+            rd.forward(request, response);
+        }catch (Exception e){
+            String errorMessage = e.getMessage();
+            request.setAttribute("errorMessage", errorMessage);
+            RequestDispatcher rd = request.getRequestDispatcher("/addBook.jsp");
+            rd.forward(request,response);
+        }
     }
 }
