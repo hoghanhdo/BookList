@@ -4,10 +4,10 @@ public class Book {
     private int id;
     private String title;
     private String author;
-    private float rating;
+    private double rating;
     private int pages;
 
-    public Book(int id, String title, String author, float rating, int pages) {
+    public Book(int id, String title, String author, double rating, int pages) {
         this.id = id;
         this.title = title;
         this.author = author;
@@ -15,11 +15,8 @@ public class Book {
         this.pages = pages;
     }
 
-    public Book(String title, String author, float rating, int pages) {
-        this.title = title;
-        this.author = author;
-        this.rating = rating;
-        this.pages = pages;
+    public Book(String title, String author, double rating, int pages) {
+        this(-1, title, author, rating, pages);
     }
 
     public int getId() {
@@ -46,11 +43,11 @@ public class Book {
         this.author = author;
     }
 
-    public float getRating() {
+    public double getRating() {
         return rating;
     }
 
-    public void setRating(float rating) {
+    public void setRating(double rating) {
         this.rating = rating;
     }
 

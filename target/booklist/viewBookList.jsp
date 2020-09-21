@@ -19,7 +19,8 @@
     <p style="font-family: Courier; color: grey;">
         User: ${user.firstName}, ${user.lastName}<br>
     </p>
-
+    <p>
+        <span style="color: lightsalmon; font-family: Courier">${message}</span>
     <table style="font-family: Courier; width: 100%;" border="1">
         <colgroup>
             <col span="1" style="width: 45%;">
@@ -47,6 +48,7 @@
             </c:forEach>
         </tbody>
     </table><br>
+    </p>
 
     <p style="font-family: Courier; color: cadetblue;">
         <a href="addBook.jsp">Add new book</a><br>

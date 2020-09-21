@@ -4,7 +4,7 @@ public class BookListInfo {
     private String title;
     private String author;
     private int pages;
-    private float rating;
+    private double rating;
     private String addedDate;
 
     public String getAddedDate() {
@@ -15,7 +15,7 @@ public class BookListInfo {
         this.addedDate = addedDate;
     }
 
-    public BookListInfo(String title, String author, int pages, float rating, String addedDate) {
+    public BookListInfo(String title, String author, int pages, double rating, String addedDate) {
         this.title = title;
         this.author = author;
         this.pages = pages;
@@ -47,11 +47,11 @@ public class BookListInfo {
         this.pages = pages;
     }
 
-    public float getRating() {
+    public double getRating() {
         return rating;
     }
 
-    public void setRating(float rating) {
+    public void setRating(double rating) {
         this.rating = rating;
     }
 }
