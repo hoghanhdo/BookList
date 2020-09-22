@@ -22,6 +22,7 @@ public class LoginServlet extends HttpServlet {
 
         UserAccountManager userAccountManager = new UserAccountManager();
         User user;
+
         try{
             Validator.validateLoginName(userId);
             Validator.validatePassword(password);
