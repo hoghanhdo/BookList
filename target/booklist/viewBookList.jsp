@@ -19,6 +19,9 @@
     <p style="font-family: Courier; color: grey;">
         User: ${user.firstName}, ${user.lastName}<br>
     </p>
+    <form action="addBook.jsp">
+        <input style="font-family: Courier; background: antiquewhite; color: darkred" type="submit" value="Add Book" />
+    </form>
     <p>
         <span style="color: lightsalmon; font-family: Courier">${message}</span>
     <table style="font-family: Courier; width: 100%;" border="1">
@@ -49,10 +52,10 @@
         </tbody>
     </table><br>
     </p>
-
-    <p style="font-family: Courier; color: cadetblue;">
-        <a href="addBook.jsp">Add new book</a><br>
-        <a href="homepage.jsp">Back to homepage</a><br>
+    <p>
+    <form action="homepage.jsp">
+        <input style="font-family: Courier; background: antiquewhite; color: darkred" type="submit" value="Back to homepage" />
+    </form>
     </p>
 </body>
 </html>

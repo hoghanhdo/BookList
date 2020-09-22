@@ -36,6 +36,20 @@ public class StringUtils {
         }
         return escaped.toString();
     }
+
+    public static boolean isEmpty (String str){
+        if (str == null){
+            return false;
+        }
+        return str.length() == 0;
+    }
+    public static boolean checkLengthRange(String str, int minLength, int maxLength){
+        if (str == null){
+            return false;
+        }
+        return minLength <= str.length() && str.length() <= maxLength;
+    }
+
     public static void main (String[] args){
         toHtmlString("two > & less than three");
     }

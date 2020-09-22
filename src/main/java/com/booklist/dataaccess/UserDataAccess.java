@@ -1,9 +1,9 @@
 package com.booklist.dataaccess;
 
 import com.booklist.beans.User;
-import com.booklist.exceptiondataaccess.DataAccessException;
-import com.booklist.exceptiondataaccess.DataIOException;
-import com.booklist.exceptiondataaccess.DataNotFoundException;
+import com.booklist.dataaccess_exception.DataAccessException;
+import com.booklist.dataaccess_exception.DataIOException;
+import com.booklist.dataaccess_exception.DataNotFoundException;
 
 import java.sql.*;
 

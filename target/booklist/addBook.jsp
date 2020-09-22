@@ -30,8 +30,8 @@
         <form method="post" action="${actionPath}">
             <table>
                 <tr style="font-family: Courier">
-                    <th style="background: steelblue; color: antiquewhite">Title</th>
-                    <td><input type="text" name="title"></td>
+                    <th style="background: steelblue; color: antiquewhite"><label for="title">Title</label></th>
+                    <td><input type="text" name="title" id="title" autofocus></td>
                 </tr>
                 <tr style="font-family: Courier">
                     <th style="background: steelblue; color: antiquewhite">Author</th>
