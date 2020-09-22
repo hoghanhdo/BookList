@@ -1,10 +1,13 @@
 package com.booklist.service;
 
+import com.booklist.beans.Book;
 import com.booklist.beans.BookListInfo;
 import com.booklist.dataaccess.BookListDataAccess;
+import com.booklist.exceptiondataaccess.AddBookException;
 import com.booklist.exceptiondataaccess.DataAccessException;
 import com.booklist.exceptiondataaccess.DataIOException;
 import com.booklist.exceptiondataaccess.DataNotFoundException;
+import com.booklist.exceptionservice.AddBookServiceException;
 import com.booklist.exceptionservice.NotMatchDataException;
 import com.booklist.exceptionservice.SystemErrorException;
 
@@ -32,17 +35,13 @@ public class BookListManager {
         return bookList;
     }
 
-/*    public static void main(String[] args){
-        BookListManager bookManager = new BookListManager();
-        List<BookListInfo> bookList;
+    public void addBook(Book book, int userId) throws SystemErrorException, AddBookServiceException {
         try{
-            bookList = bookManager.showBookList(3);
-            for (int i=0; i<bookList.size(); i++){
-                System.out.println(bookList.get(i).getTitle());
-            }
-        }catch (Exception e){
-            e.printStackTrace();
+            bookListDataAccess.addBook(book, userId);
+        } catch (AddBookException e) {
+            throw new AddBookServiceException(e.getMessage(), e);
+        } catch (DataAccessException e){
+            throw new SystemErrorException(e.getMessage(), e);
         }
-    }*/
-
+    }
 }

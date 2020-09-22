@@ -19,8 +19,8 @@
     </p>
     <p style="font-family: Courier; color: #b8860b; font-size: larger">
         <a href="booklist">♦︎ View your book list</a><br>
-        <a href="searchBook">♦︎ Search books</a><br>
-        <a href="addBook">♦ Add books</a><br>
+        <a href="searchBook.jsp">♦︎ Search books</a><br>
+        <a href="addBook.jsp">♦ Add books</a><br>
         <a href="logout">♦︎ Logout</a>
     </p>
 </body>
