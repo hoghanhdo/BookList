@@ -2,10 +2,10 @@ package com.booklist.dataaccess;
 
 import com.booklist.beans.Book;
 import com.booklist.beans.BookListInfo;
-import com.booklist.exceptiondataaccess.AddBookException;
-import com.booklist.exceptiondataaccess.DataAccessException;
-import com.booklist.exceptiondataaccess.DataIOException;
-import com.booklist.exceptiondataaccess.DataNotFoundException;
+import com.booklist.dataaccess_exception.AddBookException;
+import com.booklist.dataaccess_exception.DataAccessException;
+import com.booklist.dataaccess_exception.DataIOException;
+import com.booklist.dataaccess_exception.DataNotFoundException;
 import com.booklist.utility.StringUtils;
 
 import java.sql.*;
@@ -75,19 +75,15 @@ public class BookListDataAccess {
                     ps.setDouble(3, book.getRating());
                     ps.setInt(4, book.getPages());
                     ps.executeUpdate();
-                    System.out.println("1.");
                     int generatedCode = -1;
                     ResultSet rs = ps.getGeneratedKeys();
                     if (rs.next()) {
-                        System.out.println("2..");
                         generatedCode = rs.getInt("id");
                         PreparedStatement ps2 = conn.prepareStatement(SQL_INSERT_BOOKLIST);
                         ps2.setInt(1, generatedCode);
                         ps2.setInt(2, userId);
                         ps2.executeUpdate();
-                        System.out.println("3...");
                         conn.commit();
-                        System.out.println("Book was added successfully");
                     }
                 } catch (SQLException e) {
                     conn.rollback();
