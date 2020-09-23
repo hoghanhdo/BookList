@@ -49,11 +49,11 @@ public class Validator {
 
     public static boolean isNumeric(String str, String inputItem) throws ValidationException {
         try {
-            double d = Double.parseDouble(str);
+            Double.parseDouble(str);
+            return true;
         } catch (NumberFormatException e) {
             throw new ValidationException(inputItem + " should be numeric");
         }
-        return true;
     }
 
 }
