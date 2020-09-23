@@ -16,14 +16,14 @@ import java.io.IOException;
 
 @WebServlet("/addBook")
 public class AddBookServlet extends HttpServlet {
-    public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
+    public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         HttpSession session = request.getSession();
         User user = (User) session.getAttribute("user");
         int userId = user.getId();
         BookListManager bookListManager = new BookListManager();
 
-        try{
+        try {
             String title = "";
             String author = "";
             double rating = 0.0;
@@ -32,34 +32,34 @@ public class AddBookServlet extends HttpServlet {
             if (Validator.validateTitle(request.getParameter("title"))) {
                 title = request.getParameter("title");
             }
-            if (Validator.validateAuthor(request.getParameter("author"))){
+            if (Validator.validateAuthor(request.getParameter("author"))) {
                 author = request.getParameter("author");
             }
-            if (request.getParameter("rating").length() == 0){
-                rating = 0.0;
-            }else if (Validator.isNumeric(request.getParameter("rating"), "Rating")){
+
+            if(request.getParameter("rating").length() != 0 && Validator.isNumeric(request.getParameter("rating"), "Rating")){
                 rating = Double.parseDouble(request.getParameter("rating"));
+            }else{
+                rating = 0.0;
             }
 
-            if (request.getParameter("pages").length() == 0){
+            if(request.getParameter("pages").length() != 0 && Validator.isNumeric(request.getParameter("pages"), "Pages")){
+                pages = Integer.parseInt(request.getParameter("pages"));
+            }else{
                 pages = 0;
-            }else if (Validator.isNumeric(request.getParameter("pages"), "Pages")){
-                rating = Double.parseDouble(request.getParameter("pages"));
             }
-
-            Book book = new Book(title,author,rating,pages);
+            
+            Book book = new Book(title, author, rating, pages);
             bookListManager.addBook(book, userId);
             String message = "Book has been successfully added.";
             request.setAttribute("message", message);
             request.setAttribute("book", book);
             RequestDispatcher rd = request.getRequestDispatcher("/notification.jsp");
             rd.forward(request, response);
-
-        }catch (Exception e){
+        } catch (Exception e) {
             String errorMessage = e.getMessage();
             request.setAttribute("errorMessage", errorMessage);
             RequestDispatcher rd = request.getRequestDispatcher("/addBook.jsp");
-            rd.forward(request,response);
+            rd.forward(request, response);
         }
     }
 }
